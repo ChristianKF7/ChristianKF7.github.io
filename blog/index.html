@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blog · Christian Fletcher</title>
+  <meta name="description" content="Writing on computer science, climbing, and nature, plus a running list of things worth watching.">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link type="application/atom+xml" rel="alternate" href="https://christiankf7.github.io/feed.xml" title="Christian Fletcher" />
+</head>
+
+  <body>
+    <div class="wrapper">
+      <header class="site-header">
+  <a class="site-title" href="/">Christian Fletcher</a>
+  <nav class="site-nav" aria-label="Main">
+    <a href="/blog/" aria-current="page">Blog</a>
+    <a href="/media/">Media</a>
+    <a href="/about/">About</a>
+  </nav>
+</header>
+
+      <main>
+        <h1 class="page-title">Blog</h1>
+
+<nav class="filters" aria-label="Filter posts by category">
+  <a href="#all" data-filter="all" class="active">all</a>
+  <a href="#fitness" data-filter="fitness">fitness <span class="count">1</span></a>
+  <a href="#life" data-filter="life">life <span class="count">1</span></a>
+</nav>
+
+<ul class="post-list">
+  <li data-category="fitness">
+    <time datetime="2025-12-06T00:00:00-08:00">Dec 6, 2025</time>
+    <a class="post-link" href="/blog/Science-Based-Lifting/">Science Based isn&#39;t so Based</a>
+    <a class="tag" href="/blog/#fitness">fitness</a>
+  </li>
+  <li data-category="life">
+    <time datetime="2025-08-07T00:00:00-07:00">Aug 7, 2025</time>
+    <a class="post-link" href="/blog/On-Loneliness/">On Loneliness</a>
+    <a class="tag" href="/blog/#life">life</a>
+  </li>
+</ul>
+
+<p class="empty" hidden>No posts in this category yet.</p>
+
+<script>
+  // Category filter: /blog/#climbing shows only posts in "climbing".
+  (function () {
+    var links = document.querySelectorAll('.filters a');
+    var items = document.querySelectorAll('.post-list li');
+    var empty = document.querySelector('.empty');
+    function apply() {
+      var want = decodeURIComponent(location.hash.slice(1)) || 'all';
+      var shown = 0;
+      items.forEach(function (li) {
+        var show = want === 'all' || li.dataset.category === want;
+        li.hidden = !show;
+        if (show) shown++;
+      });
+      links.forEach(function (a) {
+        a.classList.toggle('active', a.dataset.filter === want);
+      });
+      empty.hidden = shown > 0;
+    }
+    window.addEventListener('hashchange', apply);
+    apply();
+  })();
+</script>
+
+      </main>
+      <footer class="site-footer">
+  <span>© 2026 Christian Fletcher</span>
+  <span class="footer-links">
+    <a href="https://www.instagram.com/christianfletcherfit" rel="noopener me">Instagram</a>
+    <a href="https://www.tiktok.com/@christianfletcherfit" rel="noopener me">TikTok</a>
+    <a href="https://x.com/ChristianKF7" rel="noopener me">X</a>
+    <a href="mailto:christiankfletcher@gmail.com">Email</a>
+    <a href="/feed.xml">RSS</a>
+  </span>
+</footer>
+
+    </div>
+  </body>
+</html>
