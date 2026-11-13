@@ -1,0 +1,38 @@
+#!/bin/sh
+# Create a new blog post.
+#
+#   bin/new-post "Why I Love Slab Climbing" climbing
+#
+# The second argument is the category (defaults to "uncategorized").
+
+set -e
+
+if [ -z "$1" ]; then
+  echo "usage: bin/new-post \"Post Title\" [category]" >&2
+  exit 1
+fi
+
+title=$1
+category=${2:-uncategorized}
+today=$(date +%Y-%m-%d)
+slug=$(printf '%s' "$title" | tr '[:upper:]' '[:lower:]' | sed -e "s/'//g" -e 's/[^a-z0-9]\{1,\}/-/g' -e 's/^-//' -e 's/-$//')
+file="$(dirname "$0")/../_posts/$today-$slug.md"
+
+if [ -e "$file" ]; then
+  echo "already exists: $file" >&2
+  exit 1
+fi
+
+escaped=$(printf '%s' "$title" | sed 's/"/\\"/g')
+
+cat > "$file" <<EOF
+---
+title: "$escaped"
+date: $today
+category: $category
+---
+
+Write your post here.
+EOF
+
+echo "created _posts/$today-$slug.md"

@@ -1,0 +1,27 @@
+---
+layout: default
+title: Media
+permalink: /media/
+---
+<h1 class="page-title">Media</h1>
+<p class="lede">Things I'd recommend, roughly in order.</p>
+
+<nav class="filters" aria-label="Jump to a list">
+  {%- for section in site.data.media %}
+  <a href="#{{ section.name | slugify }}">{{ section.name | escape }}</a>
+  {%- endfor %}
+</nav>
+
+{%- for section in site.data.media %}
+<section class="media-section" id="{{ section.name | slugify }}">
+  <h2 class="section-heading">{{ section.name | escape }}</h2>
+  <ol class="media-list">
+    {%- for item in section.items %}
+    <li>
+      <span class="media-title">{{ item.title | escape }}</span>
+      {%- if item.genre %}<span class="media-genre">{{ item.genre | escape }}</span>{% endif %}
+    </li>
+    {%- endfor %}
+  </ol>
+</section>
+{%- endfor %}

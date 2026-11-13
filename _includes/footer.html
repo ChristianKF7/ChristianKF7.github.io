@@ -1,0 +1,10 @@
+<footer class="site-footer">
+  <span>© {{ site.time | date: "%Y" }} {{ site.title | escape }}</span>
+  <span class="footer-links">
+    {%- for link in site.social_links %}
+    <a href="{{ link.url }}" rel="noopener me">{{ link.name | escape }}</a>
+    {%- endfor %}
+    <a href="mailto:{{ site.email }}">Email</a>
+    <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
+  </span>
+</footer>

@@ -1,0 +1,13 @@
+{%- comment -%}
+  Renders a list of posts. Usage: {% include post-list.html posts=site.posts %}
+{%- endcomment -%}
+<ul class="post-list">
+  {%- for post in include.posts %}
+  {%- assign cat = post.categories | first | default: "uncategorized" %}
+  <li data-category="{{ cat | slugify }}">
+    <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y" }}</time>
+    <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+    <a class="tag" href="{{ '/blog/' | relative_url }}#{{ cat | slugify }}">{{ cat | escape }}</a>
+  </li>
+  {%- endfor %}
+</ul>

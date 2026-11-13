@@ -1,0 +1,48 @@
+# Site settings. Restart `bundle exec jekyll serve` after editing this file.
+
+title: Christian Fletcher
+tagline: Ideas.
+description: >-
+  Writing on computer science, climbing, and nature, plus a running list of
+  things worth watching.
+email: christiankfletcher@gmail.com
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://christiankf7.github.io" # the base hostname & protocol for your site
+
+# Links shown in the header, in this order.
+nav:
+  - title: Blog
+    url: /blog/
+  - title: Media
+    url: /media/
+  - title: About
+    url: /about/
+
+# Links shown in the footer.
+social_links:
+  - name: Instagram
+    url: https://www.instagram.com/christianfletcherfit
+  - name: TikTok
+    url: https://www.tiktok.com/@christianfletcherfit
+  - name: X
+    url: https://x.com/ChristianKF7
+
+# Posts live at /blog/<title>/ regardless of their category.
+permalink: /blog/:title/
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+
+plugins:
+  - jekyll-feed
+
+exclude:
+  - bin/
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor/

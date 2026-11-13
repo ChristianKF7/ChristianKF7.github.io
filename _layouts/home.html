@@ -1,0 +1,16 @@
+---
+layout: default
+---
+<section class="intro">
+  <p class="tagline">{{ site.tagline | escape }}</p>
+  {{ content }}
+</section>
+
+<section>
+  <h2 class="section-heading">Recent posts</h2>
+  {%- assign recent = site.posts | slice: 0, 5 %}
+  {% include post-list.html posts=recent %}
+  {%- if site.posts.size > 5 %}
+  <p class="more"><a href="{{ '/blog/' | relative_url }}">All posts →</a></p>
+  {%- endif %}
+</section>

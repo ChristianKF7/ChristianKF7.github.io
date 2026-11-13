@@ -1,0 +1,34 @@
+# Media recommendations, shown at /media/.
+#
+# Each list is ranked top to bottom: the first item is #1. To add something,
+# copy two lines (title + genre) and paste them where it belongs in the order.
+# Quote a title if it contains a colon, e.g. title: "Re:Zero".
+#
+# THE ENTRIES BELOW ARE PLACEHOLDERS. Replace them with your own picks.
+
+- name: Anime
+  items:
+    - title: "Fullmetal Alchemist: Brotherhood"
+      genre: Adventure · Dark fantasy
+    - title: Mushishi
+      genre: Slice of life · Supernatural · Nature
+    - title: Steins;Gate
+      genre: Sci-fi · Thriller
+
+- name: TV Shows
+  items:
+    - title: Planet Earth II
+      genre: Nature documentary
+    - title: Mr. Robot
+      genre: Techno-thriller · Drama
+    - title: Severance
+      genre: Sci-fi · Mystery
+
+- name: Movies
+  items:
+    - title: Free Solo
+      genre: Documentary · Climbing
+    - title: The Social Network
+      genre: Drama · Biography
+    - title: Princess Mononoke
+      genre: Animation · Fantasy · Nature

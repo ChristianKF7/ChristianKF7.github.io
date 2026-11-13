@@ -1,0 +1,44 @@
+---
+layout: default
+title: Blog
+permalink: /blog/
+---
+<h1 class="page-title">Blog</h1>
+
+{%- assign names = "" | split: "" %}
+{%- for c in site.categories %}{% assign names = names | push: c[0] %}{% endfor %}
+{%- assign names = names | sort_natural %}
+
+<nav class="filters" aria-label="Filter posts by category">
+  <a href="#all" data-filter="all" class="active">all</a>
+  {%- for name in names %}
+  <a href="#{{ name | slugify }}" data-filter="{{ name | slugify }}">{{ name | escape }} <span class="count">{{ site.categories[name].size }}</span></a>
+  {%- endfor %}
+</nav>
+
+{% include post-list.html posts=site.posts %}
+<p class="empty" hidden>No posts in this category yet.</p>
+
+<script>
+  // Category filter: /blog/#climbing shows only posts in "climbing".
+  (function () {
+    var links = document.querySelectorAll('.filters a');
+    var items = document.querySelectorAll('.post-list li');
+    var empty = document.querySelector('.empty');
+    function apply() {
+      var want = decodeURIComponent(location.hash.slice(1)) || 'all';
+      var shown = 0;
+      items.forEach(function (li) {
+        var show = want === 'all' || li.dataset.category === want;
+        li.hidden = !show;
+        if (show) shown++;
+      });
+      links.forEach(function (a) {
+        a.classList.toggle('active', a.dataset.filter === want);
+      });
+      empty.hidden = shown > 0;
+    }
+    window.addEventListener('hashchange', apply);
+    apply();
+  })();
+</script>

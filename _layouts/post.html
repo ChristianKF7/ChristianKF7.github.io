@@ -1,0 +1,25 @@
+---
+layout: default
+---
+{%- assign cat = page.categories | first | default: "uncategorized" %}
+<article>
+  <header class="post-header">
+    <h1 class="page-title">{{ page.title | escape }}</h1>
+    <p class="post-meta">
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%b %-d, %Y" }}</time>
+      <a class="tag" href="{{ '/blog/' | relative_url }}#{{ cat | slugify }}">{{ cat | escape }}</a>
+    </p>
+    {%- if page.quote %}
+    <blockquote class="epigraph">
+      “{{ page.quote | strip | escape }}”
+      {%- if page.quote_by %}<cite>— {{ page.quote_by | escape }}</cite>{% endif %}
+    </blockquote>
+    {%- endif %}
+  </header>
+
+  <div class="prose">
+    {{ content }}
+  </div>
+
+  <p class="more"><a href="{{ '/blog/' | relative_url }}">← All posts</a></p>
+</article>
