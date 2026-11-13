@@ -9,6 +9,14 @@ the one stylesheet at `assets/css/main.css` are everything.
 
 Then open http://localhost:4000. Restart after editing `_config.yml`.
 
+## Publish
+
+    bin/deploy
+
+Builds the site and pushes the built files to the `gh-pages` branch, which
+GitHub Pages serves at https://christiankf7.github.io/. Run it whenever you
+want the live site updated. Separately, `git push` saves the source to `main`.
+
 ## Write a blog post
 
     bin/new-post "Post Title" climbing

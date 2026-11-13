@@ -1,0 +1,27 @@
+#!/bin/sh
+# Build the site and publish it to GitHub Pages.
+#
+#   bin/deploy
+#
+# Builds into _site/, then pushes those built files to the gh-pages branch,
+# which GitHub Pages serves directly. No GitHub Actions involved.
+
+set -e
+cd "$(dirname "$0")/.."
+
+remote=$(git remote get-url origin)
+
+JEKYLL_ENV=production bundle exec jekyll build
+
+tmp=$(mktemp -d)
+trap 'rm -rf "$tmp"' EXIT
+cp -R _site/. "$tmp/"
+touch "$tmp/.nojekyll"
+
+cd "$tmp"
+git init -q -b gh-pages
+git add -A
+git commit -q -m "Publish site $(date '+%Y-%m-%d %H:%M')"
+git push -q -f "$remote" gh-pages
+
+echo "published. Live in about a minute."
